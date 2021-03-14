@@ -1,21 +1,26 @@
 import { Component, OnInit } from '@angular/core';
+import { Car } from 'src/app/models/car';
+import { HttpClient } from '@angular/common/http';
+import { CarResponseModel } from 'src/app/models/carResponseModel';
+import { CarDetailDto } from 'src/app/models/carDetailDto';
+import { CarDetailDtoResponseModel } from 'src/app/models/carDetailDtoResponseModel';
 
 @Component({
   selector: 'app-car',
   templateUrl: './car.component.html',
-  styleUrls: ['./car.component.css']
+  styleUrls: ['./car.component.css'],
 })
 export class CarComponent implements OnInit {
 
-  car1 ={ carId:1, brandId:3, colorId:2, modelYear:2010, description:"hololo"}
-  car2 ={ carId:2, brandId:3, colorId:2, modelYear:2014, description:"zdf"}
-  car3 ={ carId:3, brandId:3, colorId:2, modelYear:2006, description:"holzczdolo"}
-  car4 ={ carId:4, brandId:3, colorId:2, modelYear:2015, description:"g<sf"}
-
-  cars = [this.car1, this.car2, this.car3, this.car4]
-  constructor() { }
+  apiUrl ="https://localhost:44302/api/cars/getcardetails"
+  cars:CarDetailDto[] = [];
+  constructor(private httpClient:HttpClient) {}
 
   ngOnInit(): void {
+    this.getCars();
   }
 
+  getCars(){
+    this.httpClient.get<CarDetailDtoResponseModel>(this.apiUrl).subscribe((response) => { this.cars = response.data})
+  }
 }

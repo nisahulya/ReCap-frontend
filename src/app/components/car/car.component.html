@@ -1,9 +1,20 @@
 <table class='table'>
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Marka Adı</td>
+            <td>Rengi</td>
+            <td>Modeli</td>
+            <td>Günlük Ücret</td>
+            <td>Açıklama</td>
+        </tr>
+    </thead>
     <tr *ngFor = "let car of cars">
         <td>{{car.carId}}</td>
-        <td>{{car.brandId}}</td>
-        <td>{{car.colorId}}</td>
+        <td>{{car.brandName}}</td>
+        <td>{{car.colorName}}</td>
         <td>{{car.modelYear}}</td>
+        <td>{{car.dailyPrice}}</td>
         <td>{{car.description}}</td>
     </tr>
 </table>
