@@ -1,5 +1,6 @@
-// import { ResponseModel } from "./responseModel";
+import { RentalDetailDto } from "./rentalDetailDto";
+import { ResponseModel } from "./responseModel";
 
-// export interface RentalDetailDtoResponseModel extends ResponseModel{
-//     data:RentalDetailDto[]
-// }
+export interface RentalDetailDtoResponseModel extends ResponseModel{
+    data:RentalDetailDto[]
+}
