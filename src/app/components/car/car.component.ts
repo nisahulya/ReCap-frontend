@@ -41,4 +41,11 @@ export class CarComponent implements OnInit {
     })
   }
 
+  getCarsByColor(colorId:number){
+    this.carService.getCarsByColor(colorId).subscribe(response=>{
+      this.cars = response.data
+      this.dataLoaded = true;
+    })
+  }
+
 }
