@@ -11,9 +11,10 @@ import { CarService } from 'src/app/services/car.service';
 })
 export class CarComponent implements OnInit {
 
- 
   cars:CarDetailDto[] = [];
   dataLoaded=false;
+  
+
   constructor(private carService:CarService, 
     private activatedRoute:ActivatedRoute) {}
 
@@ -21,7 +22,7 @@ export class CarComponent implements OnInit {
     this.activatedRoute.params.subscribe(params=>{
       if(params["brandId"]){
         this.getCarsByBrand(params["brandId"])
-      }if(params["colorId"]){
+      }else if(params["colorId"]){
         this.getCarsByColor(params["colorId"])
       }else{
         this.getCars()
