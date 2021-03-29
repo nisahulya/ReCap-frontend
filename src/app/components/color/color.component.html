@@ -3,14 +3,14 @@
     <input type="text" [(ngModel)]="filterColorText" class="form-control" id="filterColorText" placeholder="arama ifadesi giriniz">
 </div>
 
-<div *ngIf="filterText.length>2" class="alert alert-primary">
+<div *ngIf="filterColorText.length>2" class="alert alert-primary">
  {{filterColorText}} aradınız
 </div>
 
 <ul class="list-group">
     <li (click)="setCurrentColor(color)"
     routerLink="/cars/color/{{color.colorId}}"
-    *ngFor="let color of colors" 
+    *ngFor="let color of colors | filterColorPipe:filterColorText" 
     [class]="getCurrentColorClass(color)" >{{color.colorName}}</li>
 </ul>
 
