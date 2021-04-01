@@ -1,10 +1,10 @@
 <table class='table'>
-    <tr *ngFor = "let rental of rentals">
-        <td>{{rental.rentalId}}</td>
-        <td>{{rental.brandName}}</td>
-        <td>{{rental.firstName}}</td>
-        <td>{{rental.lastName}}</td>
-        <td>{{rental.rentDate}}</td>
-        <td>{{rental.returnDate}}</td>
+    <tr *ngFor = "let rentalDetailDto of rentalDetailDtos">
+        <td>{{rentalDetailDto.rentalId}}</td>
+        <td>{{rentalDetailDto.brandName}}</td>
+        <td>{{rentalDetailDto.firstName}}</td>
+        <td>{{rentalDetailDto.lastName}}</td>
+        <td>{{rentalDetailDto.rentDate}}</td>
+        <td>{{rentalDetailDto.returnDate}}</td>
     </tr>
 </table>
