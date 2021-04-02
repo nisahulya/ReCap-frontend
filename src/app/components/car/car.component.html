@@ -23,7 +23,11 @@
   </div>
   <div class="col-md-5">
     <label class="mr-sm-2" for="inlineFormCustomSelect"> Renkler </label>
-    <select class="custom-select custom-select-md mb-3" [(ngModel)]="colorId" aria-placeholder="All Colors">
+    <select
+      class="custom-select custom-select-md mb-3"
+      [(ngModel)]="colorId"
+      aria-placeholder="All Colors"
+    >
       <option
         *ngFor="let color of colors"
         [value]="color.colorId"
@@ -53,6 +57,7 @@
       <td>Modeli</td>
       <td>Günlük Ücret</td>
       <td>Açıklama</td>
+      <td></td>
     </tr>
   </thead>
   <tr *ngFor="let car of cars">
@@ -62,5 +67,14 @@
     <td>{{ car.modelYear }}</td>
     <td>{{ car.dailyPrice }}</td>
     <td>{{ car.description }}</td>
+    <td>
+      <button
+        (click)="addToRent(carDetailDto)"
+        type="button"
+        class="btn btn-success"
+      >
+        Kirala
+      </button>
+    </td>
   </tr>
 </table>

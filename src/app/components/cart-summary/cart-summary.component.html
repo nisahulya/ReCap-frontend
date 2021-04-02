@@ -1,0 +1,31 @@
+<li *ngIf="rentItems" class="nav-item dropdown">
+    <a
+      class="nav-link dropdown-toggle"
+      id="navbarDropdown"
+      role="button"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      Sepetiniz
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+      <li *ngFor="let rentItem of rentItems">
+        <a  class="dropdown-item">
+          {{ rentItem.carDetailDto.brandName }}
+          <span class="badge bg-success">{{ rentItem.quantity }}</span>
+          <span
+            (click)="removeFromRent(rentItem.carDetailDto)"
+            class="badge bg-danger"
+            >sil</span
+          >
+        </a>
+      </li>
+  
+      <li><hr class="dropdown-divider" /></li>
+      <li >
+        <a routerLink="cardlist" class="dropdown-item" 
+          ><h6>Sepetime Git ></h6></a
+        >
+      </li>
+    </ul>
+  </li>

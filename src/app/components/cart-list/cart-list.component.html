@@ -1,0 +1,56 @@
+<div
+  *ngIf="dataLoaded == false"
+  class="spinner-border text-danger d-flex mx-auto"
+  role="status"
+>
+  <span class="visually-hidden">Loading...</span>
+</div>
+
+<h5><p class="font-weight-bold">Sepet</p></h5>
+
+<table *ngIf="dataLoaded == true" class="table table-bordered table-condensed table-hover" >
+  <thead class="thead-dark">
+    <tr>
+      <th>Marka</th>
+      <th>Model</th>
+      <th>Renk</th>
+      <th>Kira Tarihi</th>
+      <th>Teslim Tarihi</th>
+      <th>Toplam</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr  *ngFor="let rentItem of rentItems">
+      <td>{{ rentItem.carDetailDto.brandName }}</td>
+      <td>{{ rentItem.carDetailDto.modelYear }}</td>
+      <td>{{ rentItem.carDetailDto.colorName }}</td>
+      <td>{{ rentItem.rentDate | date: "dd.MM.YYYY" }}</td>
+      <td>{{ rentItem.returnDate | date: "dd.MM.YYYY" }}</td>
+      <td class="text-right">{{rentItem.carDetailDto.dailyPrice }} TL</td>
+      <td class="text-center">
+        <button type="button" (click)="removeFromRent(rentItem.carDetailDto)" class="btn btn-primary">
+          Sil
+        </button>
+      </td>
+    </tr>
+
+    <tr *ngIf="rentItems.length == 0">
+      <td colspan="8">SEPETİNİZ BOŞ</td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="rentItems.length > 0">
+  <div class="row">
+    <div class="col-8">
+      <h5>
+        <!-- Toplam Tutar : <strong>{{ cartTotal }}</strong> TL -->
+      </h5>
+    </div>
+    
+    <div class="col-4">
+      <button type="button"  class="btn btn-success float-right"> Ödeme </button>
+    </div>
+  </div>
+</div>

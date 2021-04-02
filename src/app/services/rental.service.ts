@@ -14,13 +14,13 @@ export class RentalService {
   
   constructor(private httpClient:HttpClient) { }
 
-  // getRentalDtos(): Observable <ListResponseModel<RentalDetailDto>> {
-  //   let newPath = this.apiUrl + "/rentals/getrentaldetails";
-  //   return this.httpClient.get<ListResponseModel<RentalDetailDto>>(newPath);
-  // }
+  getRentalDtos(): Observable <ListResponseModel<RentalDetailDto>> {
+    let newPath = this.apiUrl + "/rentals/getrentaldetails";
+    return this.httpClient.get<ListResponseModel<RentalDetailDto>>(newPath);
+  }
 
-  // getRentals():Observable<ListResponseModel<Rental>> {
-  //   let newPath = this.apiUrl + "/rentals/getall";
-  //   return this.httpClient.get<ListResponseModel<Rental>>(newPath);
-  // }
+  getRentals():Observable<ListResponseModel<Rental>> {
+    let newPath = this.apiUrl + "/rentals/getall";
+    return this.httpClient.get<ListResponseModel<Rental>>(newPath);
+  }
 }

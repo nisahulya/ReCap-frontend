@@ -22,10 +22,12 @@ export class RentService {
       RentItems.push(rentItem) //sepete ekler
     }
   }
+  
   removeFromRent(carDetailDto : CarDetailDto){
     let item =RentItems.find(c=> c.carDetailDto.carId === carDetailDto.carId);
     RentItems.splice(RentItems.indexOf(item),1);
   }
+
   list() : RentItem[]{ //kiralama sepetini listeliyoruz.
     return RentItems;
   }

@@ -7,6 +7,8 @@ import { CarDetailDto } from 'src/app/models/carDetailDto';
 import { CarService } from 'src/app/services/car.service';
 import { ColorService } from 'src/app/services/color.service';
 import { BrandService } from 'src/app/services/brand.service';
+import { ToastrService } from 'ngx-toastr';
+import { RentService } from 'src/app/services/rent.service';
 
 @Component({
   selector: 'app-car',
@@ -28,7 +30,9 @@ export class CarComponent implements OnInit {
   constructor(private carService:CarService, 
     private activatedRoute:ActivatedRoute,
     private brandService: BrandService,
-    private colorService: ColorService) {}
+    private colorService: ColorService,
+    private toastrService : ToastrService,
+    private rentService : RentService) {}
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
@@ -113,5 +117,17 @@ export class CarComponent implements OnInit {
       return false;
     }
   }
+
+  addToRent(carDetailDto : CarDetailDto){
+    
+    
+    if(carDetailDto.carId===0){
+      this.toastrService.error("Bu araç bulunmuyor");
+    }
+    else {
+      this.toastrService.success("Kiralama Sepetine Eklendi");
+      this.rentService.addToRent(carDetailDto);
+    }    
+  }  
 
 }
