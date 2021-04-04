@@ -20,6 +20,7 @@ export class CarComponent implements OnInit {
   cars:CarDetailDto[] = [];
   dataLoaded=false;
   carDetailDtos: CarDetailDto[] = [];
+  carDetailDto : CarDetailDto;
   colors: Color[] = [];
   brands: Brand[] = [];
   filterText: string = '';
