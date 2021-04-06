@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators} from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { BrandService } from 'src/app/services/brand.service';
 
 @Component({
   selector: 'app-brand-add',
@@ -9,7 +11,7 @@ import { FormGroup, FormBuilder, FormControl, Validators} from '@angular/forms';
 export class BrandAddComponent implements OnInit {
 
   brandAddForm : FormGroup;
-  constructor(private formBuilder:FormBuilder) { }
+  constructor(private formBuilder:FormBuilder, private brandService:BrandService, private toastrService:ToastrService) { }
 
   ngOnInit(): void {
     this.createBrandAddForm();
@@ -22,10 +24,23 @@ export class BrandAddComponent implements OnInit {
   }
 
   add(){
-    let brandModel = Object.assign({}, this.brandAddForm.value)
-    console.log(brandModel)
+    if(this.brandAddForm.valid){
+      let brandModel = Object.assign({}, this.brandAddForm.value)
+      this.brandService.add(brandModel).subscribe(response=>{
+        this.toastrService.success(response.message, "Başarılı")
+      },responseError=>{
+        if(responseError.error.Errors.length>0){
+          for (let i = 0; i <responseError.error.Errors.length; i++) {
+            this.toastrService.error(responseError.error.Errors[i].ErrorMessage
+              ,"Doğrulama hatası")
+          }
+        }  
+      })
+    }else{
+      this.toastrService.error("Formunuz eksik", "Dikkat")
+    }
+    
   }
 
 
 }
-//özsivas 38 at 332  0541 341 53 58
