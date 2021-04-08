@@ -1,0 +1,61 @@
+<body class="text-center">
+    <form class="form-signin" [formGroup] = "registerForm">
+      <div class="text-center mb-4">
+        <h1 class="h3 mb-3 font-weight-normal">Kayıt Ol</h1>
+      </div>
+      <label for="firstName">İsim</label>
+      <div class="form-label-group">
+        <input
+          formControlName ="firstName"
+          type="text"
+          id="firstName"
+          class="form-control"
+          placeholder="First Name"
+          required=""
+          autofocus=""
+        />
+        
+      </div>
+      <label for="lastName">Soyisim</label>
+      <div class="form-label-group">
+        <input
+          formControlName ="lastName"
+          type="text"
+          id="lastName"
+          class="form-control"
+          placeholder="Last Name"
+          required=""
+          autofocus=""
+        />
+        
+      </div>
+      <label for="inputEmail">E-posta</label>
+      <div class="form-label-group">
+        <input
+          formControlName ="email"
+          type="email"
+          id="inputEmail"
+          class="form-control"
+          placeholder="Email address"
+          required=""
+          autofocus=""
+        />
+        
+      </div>
+      <label for="inputPassword">Parola</label>
+      <div class="form-label-group">
+        <input
+          formControlName ="password"
+          type="password"
+          id="inputPassword"
+          class="form-control"
+          placeholder="Password"
+          required=""
+        />
+        
+      </div>
+      <button class="btn btn-lg btn-primary btn-block" (click)="register()" routerLink="/login">
+        Kayıt Ol
+      </button>
+    </form>
+  </body>

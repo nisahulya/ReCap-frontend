@@ -3,6 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { LoginModel } from '../models/loginModel';
 import { TokenModel } from '../models/tokenModel';
 import { SingleResponseModel } from '../models/singleResponseModel';
+import { Register } from '../models/register';
+
+
 
 
 @Injectable({
@@ -24,5 +27,13 @@ export class AuthService {
     else{
       return false;
     }
+  }
+
+  register(register: Register) {
+    let newPath = this.apiUrl + '/auth/register';
+    return this.httpClient.post<SingleResponseModel<TokenModel>>(
+      newPath,
+      register
+    );
   }
 }

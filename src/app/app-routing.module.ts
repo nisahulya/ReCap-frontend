@@ -7,6 +7,8 @@ import { CartListComponent } from './components/cart-list/cart-list.component';
 import { ColorAddComponent } from './components/color-add/color-add.component';
 import { LoginComponent } from './components/login/login.component';
 import { RentalComponent } from './components/rental/rental.component';
+import { LoginGuard } from './guards/login.guard';
+import { RegisterComponent } from './components/register/register.component';
 
 
 const routes: Routes = [
@@ -23,10 +25,11 @@ const routes: Routes = [
   {path : "cars/rentals/:carId",component: RentalComponent },
 
   {path:"brands/add", component:BrandAddComponent},
-  {path:"cars/add", component:CarAddComponent},
+  {path:"cars/add", component:CarAddComponent, canActivate:[LoginGuard]},
   {path:"colors/add", component:ColorAddComponent},
 
-  {path:"login", component:LoginComponent}
+  {path:"login", component:LoginComponent},
+  {path:"register", component: RegisterComponent},
 
 
 
