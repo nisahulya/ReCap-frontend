@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LocalStorageService } from 'src/app/services/local-Storage.service';
+
 import {
   FormGroup,
   FormControl,
@@ -18,7 +20,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private toastrService:ToastrService
+    private toastrService:ToastrService,
+    private localStorageService:LocalStorageService
   ) {}
 
   ngOnInit(): void {
@@ -39,7 +42,7 @@ export class LoginComponent implements OnInit {
 
       this.authService.login(loginModel).subscribe((response) => {
         this.toastrService.info(response.message)
-        localStorage.setItem("token",response.data.token)
+        this.localStorageService.setLocalStorage("token",response.data.token)
       },responseError=>{
         //console.log(responseError)
         this.toastrService.error(responseError.error)
