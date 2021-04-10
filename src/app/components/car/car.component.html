@@ -69,10 +69,11 @@
     <td>{{ car.description }}</td>
     <td>
       <button
-        (click)="addToRent(carDetailDto)"
-        type="button"
-        class="btn btn-xs btn-success"
-        routerLink="/cars/rentals"
+      *ngIf="isCustomer"
+      type="button"
+      class="btn btn-xs btn-success"
+      style="width: 100px; margin-right: 10px"
+      (click) = "getRentalPage(carForRentalDtos.isRented)"
       >
         Kirala
       </button>

@@ -5,5 +5,6 @@ export interface Car{
     modelYear:number;
     dailyPrice:number;
     description:string;
-
+    minFindeks:number;
+    carName:string
 }

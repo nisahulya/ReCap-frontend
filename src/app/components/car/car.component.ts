@@ -9,6 +9,10 @@ import { ColorService } from 'src/app/services/color.service';
 import { BrandService } from 'src/app/services/brand.service';
 import { ToastrService } from 'ngx-toastr';
 import { RentService } from 'src/app/services/rent.service';
+import { RentalService } from 'src/app/services/rental.service';
+import { CarForRentalDto } from 'src/app/models/carForRentalDto';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
+
 
 @Component({
   selector: 'app-car',
@@ -26,6 +30,11 @@ export class CarComponent implements OnInit {
   filterText: string = '';
   brandId: number;
   colorId: number;
+  isRented: boolean;
+  carForRentalDtos : CarForRentalDto;
+  isCustomer:boolean;
+
+
  
 
   constructor(private carService:CarService, 
@@ -33,7 +42,11 @@ export class CarComponent implements OnInit {
     private brandService: BrandService,
     private colorService: ColorService,
     private toastrService : ToastrService,
-    private rentService : RentService) {}
+    private rentService : RentService,
+    private localStorageSevice: LocalStorageService,
+    private rentalService:RentalService,
+
+    ) {}
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
@@ -130,5 +143,29 @@ export class CarComponent implements OnInit {
       this.rentService.addToRent(carDetailDto);
     }    
   }  
+
+  getRentalPage(isRented: boolean) {
+    this.isRented = isRented;
+    if (this.isRented == false) {
+      this.checkFindeks();
+      return true;
+    } else {
+      this.toastrService.error(
+        'Bu araç zaten kiralanmış. Lütfen başka bir araç seçiniz.'
+      );
+      return false;
+    }   
+  }
+  
+
+  checkFindeks()
+  {
+    let carId:number = this.carForRentalDtos.carId;
+    let customerId:number = this.localStorageSevice.getIdDecodeToken();
+    this.rentalService.checkFindeks(carId, customerId).subscribe(response =>{
+    },responseError => {
+      this.toastrService.error(responseError.error.message, "error");
+    });
+  }
 
 }

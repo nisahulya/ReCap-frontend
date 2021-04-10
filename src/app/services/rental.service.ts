@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { ListResponseModel } from '../models/listResponseModel';
 import { Rental } from '../models/rental';
 import { RentalDetailDto } from '../models/rentalDetailDto';
+import { ResponseModel } from '../models/responseModel';
+
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +24,11 @@ export class RentalService {
   getRentals():Observable<ListResponseModel<Rental>> {
     let newPath = this.apiUrl + "/rentals/getall";
     return this.httpClient.get<ListResponseModel<Rental>>(newPath);
+  }
+
+  checkFindeks(carId:number, customerId:number):Observable<ResponseModel>
+  {
+    let newPath = this.apiUrl + "/rentals/checkfindeks?carId=" + carId + "&customerId=" + customerId;
+    return this.httpClient.get<ResponseModel>(newPath);
   }
 }
