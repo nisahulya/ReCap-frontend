@@ -12,6 +12,7 @@ import { RentService } from 'src/app/services/rent.service';
 import { RentalService } from 'src/app/services/rental.service';
 import { CarForRentalDto } from 'src/app/models/carForRentalDto';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { UserService } from 'src/app/services/user.service';
 
 
 @Component({
@@ -35,8 +36,6 @@ export class CarComponent implements OnInit {
   isCustomer:boolean;
 
 
- 
-
   constructor(private carService:CarService, 
     private activatedRoute:ActivatedRoute,
     private brandService: BrandService,
@@ -45,6 +44,7 @@ export class CarComponent implements OnInit {
     private rentService : RentService,
     private localStorageSevice: LocalStorageService,
     private rentalService:RentalService,
+    private userService:UserService
 
     ) {}
 
@@ -165,6 +165,15 @@ export class CarComponent implements OnInit {
     this.rentalService.checkFindeks(carId, customerId).subscribe(response =>{
     },responseError => {
       this.toastrService.error(responseError.error.message, "error");
+    });
+  }
+
+  checkIfCustomer()
+  {
+    var userId = this.localStorageSevice.getIdDecodeToken();
+    this.userService.checkIfCustomer(userId).subscribe(response => {
+      this.isCustomer = response.success;
+      console.log(response.success)
     });
   }
 

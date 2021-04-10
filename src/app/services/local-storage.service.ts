@@ -30,4 +30,18 @@ export class LocalStorageService {
     let id:number = Number(Object.values(jwtDecode(token))[0]);
     return id;
   }
+
+  getUserNameDecodeToken()
+  { 
+    let token =this.getLocalStorage("token");
+    let name:string = String(Object.values(jwtDecode(token))[2]);
+    return name;
+  }
+
+  getClaimsDecodeToken()
+  {
+    let token =this.getLocalStorage("token");
+    let claim:string = String(Object.values(jwtDecode(token))[3]);
+    return claim;
+  }
 }

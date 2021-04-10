@@ -57,6 +57,7 @@
       <td>Modeli</td>
       <td>Günlük Ücret</td>
       <td>Açıklama</td>
+      <td>Min Findeks</td>
       <td></td>
     </tr>
   </thead>
@@ -67,6 +68,7 @@
     <td>{{ car.modelYear }}</td>
     <td>{{ car.dailyPrice }}</td>
     <td>{{ car.description }}</td>
+    <td>{{ car.minFindeks }}</td>
     <td>
       <button
       *ngIf="isCustomer"
@@ -74,6 +76,7 @@
       class="btn btn-xs btn-success"
       style="width: 100px; margin-right: 10px"
       (click) = "getRentalPage(carForRentalDtos.isRented)"
+      routerLink="/cars/rentals/"
       >
         Kirala
       </button>

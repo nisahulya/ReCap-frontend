@@ -10,17 +10,50 @@
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link active" href="#">Link</a>
           </li>
           <app-cart-summary></app-cart-summary>
           <li class="nav-item">
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
           </li>
         </ul>
-        <form class="d-flex">
+        <div class="form-inline my-2 my-lg-0" style="float: right">
+          <div class="form-inline my-2 my-lg-0" style="float: right">
+            <button
+              *ngIf="!isVerified"
+              class="btn btn-primary my-2 my-sm-0"
+              routerLink="/login"
+            >
+              Login
+            </button>
+            <button
+              *ngIf="!isVerified"
+              class="btn btn-primary my-2 my-sm-0"
+              routerLink="/register"
+              style="margin-left: 10px"
+            >
+              Register
+            </button>
+            <div *ngIf="isVerified">
+              <div class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle btn btn-primary"
+                  data-toggle="dropdown"
+                  role="button"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  >{{userName}}</a
+                >
+                <div class="dropdown-menu">
+                  <button class="dropdown-item" routerLink="/profile">Profil</button>
+                  <button class="dropdown-item" routerLink="/login" (click)="logOut()">Çıkış Yap</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        <!-- <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+        </form> -->
       </div>
     </div>
-  </nav>
