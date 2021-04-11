@@ -9,6 +9,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RentalComponent } from './components/rental/rental.component';
 import { LoginGuard } from './guards/login.guard';
 import { RegisterComponent } from './components/register/register.component';
+import { CreditcardComponent } from './components/creditcard/creditcard.component';
 
 
 const routes: Routes = [
@@ -30,6 +31,8 @@ const routes: Routes = [
 
   {path:"login", component:LoginComponent},
   {path:"register", component: RegisterComponent},
+
+  {path:"creditcard", component: CreditcardComponent}
 
 
 
