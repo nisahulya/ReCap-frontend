@@ -16,6 +16,7 @@ export class CreditcardComponent implements OnInit {
     private toastrService:ToastrService, private localStorageService:LocalStorageService) { }
 
   ngOnInit(): void {
+    this.createCreditCardAddForm();
   }
 
   createCreditCardAddForm()
@@ -32,7 +33,7 @@ export class CreditcardComponent implements OnInit {
   addCreditCard()
   {
     let creditCardModel =  Object.assign({}, this.creditCardAddForm.value);
-    creditCardModel.customerID = Number(this.localStorageService.getIdDecodeToken());
+    creditCardModel.customerId = Number(this.localStorageService.getIdDecodeToken());
     this.userService.addCreditCard(creditCardModel).subscribe((response) => {
       this.toastrService.success(response.message, "Success");
       window.location.reload();

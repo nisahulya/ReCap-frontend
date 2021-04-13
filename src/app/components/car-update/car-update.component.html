@@ -1,0 +1,139 @@
+<div class="content">
+    <div class="col-md-2">
+      <div class="card">
+        <div class="card-header"><h5 class="title">Araç Güncelle</h5></div>
+        <div class="card-body">
+          <form [formGroup]="carUpdateForm">
+
+            <div class="mb-3">
+              <label for="carId"><h6>Araç No</h6></label>  
+              <select
+                class="form-select"
+                formControlName="carId"
+                aria-placeholder="carId"
+              >
+                <option
+                  *ngFor="let car of cars"
+                  [value]="car.carId"
+                  [selected]="getSelectedCar(car.carId)"
+                >
+                  {{ car.carId }}
+                </option>
+              </select>            
+            </div>
+
+            <div class="mb-3">
+              <label for="carName"><h6>Araç ismi</h6></label>
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="carName"
+                  formControlName="carName"
+                  class="form-control"
+                  placeholder="araç ismi"
+                />
+              </div>
+            </div>
+
+              <div class="mb-3">
+                <label for="brandId"><h6>Marka No</h6></label>  
+                <select
+                  class="form-select"
+                  formControlName="brandId"
+                  aria-placeholder="brandId"
+                >
+                  <option
+                    *ngFor="let brand of brands"
+                    [value]="brand.brandId"
+                    [selected]="getSelectedBrand(brand.brandId)"
+                  >
+                    {{ brand.brandName }}
+                  </option>
+                </select>            
+              </div>
+
+              <div class="mb-3">
+                <label for="brandModel"><h6>Model</h6></label>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    id="brandModel"
+                    formControlName="brandModel"
+                    class="form-control"
+                    placeholder="model"
+                  />
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="colorId"><h6>Renk No</h6></label>  
+                <select
+                  class="form-select"
+                  formControlName="colorId"
+                  aria-placeholder="colorId"
+                >
+                  <option
+                    *ngFor="let color of colors"
+                    [value]="color.colorId"
+                    [selected]="getSelectedColor(color.colorId)"
+                  >
+                    {{ color.colorName }}
+                  </option>
+                </select>            
+              </div>
+
+              <div class="mb-3">
+                <label for="modelYear"><h6>Model yılı</h6></label>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    id="modelYear"
+                    formControlName="modelYear"
+                    class="form-control"
+                    placeholder=""
+                  />
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="dailyPrice"><h6>Günlük ücreti</h6></label>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    id="dailyPrice"
+                    formControlName="dailyPrice"
+                    class="form-control"
+                    placeholder=""
+                  />
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="description"><h6>Araç Bilgileri</h6></label>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    id="description"
+                    formControlName="description"
+                    class="form-control"
+                    placeholder=""
+                  />
+                </div>
+              </div>
+  
+           
+          </form>
+        </div>
+        <div class="card-footer">
+          <button type="button"
+          class="btn btn-outline-info"
+          style="margin-right: 5px" (click)="update()">
+            Güncelle
+          </button>
+          <!-- <button routerLink="/cars/list" type="button" class="btn btn-outline-primary">
+            Geri
+          </button> -->
+        </div>
+      </div>
+    </div>
+  </div>

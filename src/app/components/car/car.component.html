@@ -10,7 +10,8 @@
 <div class="row">
   <div class="col-md-5">
     <label class="mr-sm-2" for="inlineFormCustomSelect"> Markalar </label>
-    <select class="custom-select custom-select-md mb-3" [(ngModel)]="brandId">
+    <select class="custom-select custom-select-md mb-3" [(ngModel)]="brandId" aria-placeholder="All Colors"
+    >
       <option selected>Tüm Renkler</option>
       <option
         [value]="brand.brandId"
@@ -59,6 +60,7 @@
       <td>Açıklama</td>
       <td>Min Findeks</td>
       <td></td>
+      <td></td>
     </tr>
   </thead>
   <tr *ngFor="let car of cars">
@@ -68,7 +70,7 @@
     <td>{{ car.modelYear }}</td>
     <td>{{ car.dailyPrice }}</td>
     <td>{{ car.description }}</td>
-    <td>{{ car.minFindeks }}</td>
+    <!-- <td>{{ car.minFindeks }}</td> -->
     <td>
       <button
       *ngIf="isCustomer"
@@ -80,6 +82,18 @@
       >
         Kirala
       </button>
+    </td>
+    <td>
+      <div class="d-flex justify-content-center">
+        <button
+          type="button"
+          class="btn btn-outline-info"
+          style="margin-right: 5px"
+          routerLink="/cars/update/{{car.carId}}"
+        >
+          Güncelle
+        </button>
+      </div>
     </td>
   </tr>
 </table>

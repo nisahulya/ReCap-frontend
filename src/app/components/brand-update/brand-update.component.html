@@ -1,0 +1,71 @@
+<div class="content">
+    <div class="col-md-2">
+      <div class="card">
+        <div class="card-header"><h5 class="title">Marka Güncelle</h5></div>
+        <div class="card-body">
+          <form [formGroup]="brandUpdateForm">
+            <div class="mb-3">
+              <label for="brandId"><h6>Marka No</h6></label>
+  
+              <select
+                class="form-select"
+                formControlName="brandId"
+                aria-placeholder="brandId"
+              >
+                <option
+                  *ngFor="let brand of brands"
+                  [value]="brand.brandId"
+                  [selected]="getSelectedBrandId(brand.brandId)"
+                >
+                  {{ brand.brandId }} / {{brand.brandName}}
+                </option>
+              </select>
+  
+              <!-- <div class="form-group">
+                              <input type="number" 
+                              id="brandId" 
+                              formControlName="brandId" class="form-control" 
+                              placeholder="marka no"/>
+                          </div> -->
+            </div>
+  
+            <div class="mb-3">
+              <label for="brandName"><h6>Marka</h6></label>
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="brandName"
+                  formControlName="brandName"
+                  class="form-control"
+                  placeholder="marka ismi"
+                />
+              </div>
+            </div>
+  
+            <div class="mb-3">
+              <label for="brandModel"><h6>Model</h6></label>
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="brandModel"
+                  formControlName="brandModel"
+                  class="form-control"
+                  placeholder="model"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="card-footer">
+          <button type="button"
+          class="btn btn-outline-info"
+          style="margin-right: 5px" (click)="update()">
+            Güncelle
+          </button>
+          <button routerLink="/brands/list" type="button" class="btn btn-outline-primary">
+            Geri
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>

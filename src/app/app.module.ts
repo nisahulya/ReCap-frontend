@@ -26,6 +26,11 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { RegisterComponent } from './components/register/register.component';
 import { CreditcardComponent } from './components/creditcard/creditcard.component';
+import { CarUpdateComponent } from './components/car-update/car-update.component';
+import { BrandListComponent } from './components/brand-list/brand-list.component';
+import { BrandUpdateComponent } from './components/brand-update/brand-update.component';
+import { ColorListComponent } from './components/color-list/color-list.component';
+import { ColorUpdateComponent } from './components/color-update/color-update.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +50,12 @@ import { CreditcardComponent } from './components/creditcard/creditcard.componen
     ColorAddComponent,
     LoginComponent,
     RegisterComponent,
-    CreditcardComponent
+    CreditcardComponent,
+    CarUpdateComponent,
+    BrandListComponent,
+    BrandUpdateComponent,
+    ColorListComponent,
+    ColorUpdateComponent
   ],
   imports: [
     BrowserModule,

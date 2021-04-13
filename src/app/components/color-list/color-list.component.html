@@ -1,0 +1,32 @@
+<div class="alert alert-info text-center">Renk İşlemleri</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col" style="width: 200px">Renk Id</th>
+      <th scope="col" style="width: 500px">Renk Adı</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let color of colors">
+      <th scope="row">{{ color.colorId }}</th>
+      <td>{{ color.colorName }}</td>
+      <td>
+        <div class="d-flex justify-content-center">
+          <button
+            type="button"
+            class="btn btn-outline-info"
+            style="margin-right: 5px"
+            routerLink="/colors/update/{{ color.colorId }}"
+          >
+            Güncelle
+          </button>
+          <!-- <button class="btn btn-outline-danger" (click)="delete(color)">
+            Sil
+          </button> -->
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

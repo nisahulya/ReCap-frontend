@@ -10,6 +10,9 @@ import { RentalComponent } from './components/rental/rental.component';
 import { LoginGuard } from './guards/login.guard';
 import { RegisterComponent } from './components/register/register.component';
 import { CreditcardComponent } from './components/creditcard/creditcard.component';
+import { BrandUpdateComponent } from './components/brand-update/brand-update.component';
+import { CarUpdateComponent } from './components/car-update/car-update.component';
+import { ColorUpdateComponent } from './components/color-update/color-update.component';
 
 
 const routes: Routes = [
@@ -32,7 +35,11 @@ const routes: Routes = [
   {path:"login", component:LoginComponent},
   {path:"register", component: RegisterComponent},
 
-  {path:"creditcard", component: CreditcardComponent}
+  {path:"creditcard", component: CreditcardComponent},
+
+  {path : "brands/update", component : BrandUpdateComponent}, //canActivate : [LoginGuard]},
+  {path : "colors/update", component : ColorUpdateComponent}, //canActivate : [LoginGuard]},
+  {path : "cars/update", component : CarUpdateComponent} //canActivate : [LoginGuard]},
 
 
 
